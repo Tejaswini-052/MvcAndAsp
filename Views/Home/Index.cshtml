@@ -1,0 +1,322 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- Responsive Meta Tag -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Adding Bootstrap CDN - Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<!-- Adding Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<!-- Adding CSS -->
+	<title>TejZbus</title>
+
+	<style>
+		* {
+	box-sizing: border-box;
+}
+
+/* Main Home Banner and Input Search Container r*/
+.home-banner {
+	/* "../" for back to main folder */
+	background-image: url(https://res.klook.com/image/upload/fl_lossy.progressive,q_85/c_fill,,w_1920,/v1607593668/banner/nlvk7zb0lqrp7zxgp7uz.jpg);
+	background-size: cover;
+	background-repeat: round;
+	height: 450px;
+}
+input[type="text"]:valid + label {
+	display: none;
+  }
+.input-search-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	right: 50%;
+}
+
+.inputIcon {
+	position: absolute;
+	left: 5px;
+	font-size: 25px;
+	vertical-align: middle;
+	color: #AAA;
+}
+
+.inputForm {
+	width: 225px;
+	height: 40px;
+	padding-left: 28px;
+}
+
+.inputLabel-default {
+	position: absolute;
+	left: 30px;
+	color: grey;
+	font-weight: 350;
+	font-size: 15px;
+	margin-top: 8px;
+	transition-duration: 0.3s;
+}
+	.inputLabel-focusIn {
+		position: absolute;
+		left: 30px;
+		color: #9b9b9b;
+		font-size: 10px;	
+		margin-top: 1px;
+	}
+
+/* Coupons Container */
+.holiday-coupon-container {
+	width: 540px;
+	position: absolute;
+	left: 30%;
+	right: 30%;
+	top: -4em;
+}
+	.holiday-coupon-container > .d-table-cell {
+		height: 100px;
+	}
+
+/* Cashback Container */
+.cashback-container > div {
+	transition: transform .2s;
+}
+	.cashback-container > div:hover {
+		transform: scale(1.05);
+	}
+
+/* Introducing On-Time Guarantee & Track My Bus Container
+	& IOS/Android Container & We Promise To Deliver Container */
+.on-time-guarantee,
+.track-my-bus,
+.ios-android-container .d-flex,
+.we-promise-container > div:nth-child(2) {
+	margin: 0 auto;
+	max-width: 1200px;
+}
+	.track-my-bus .d-table-cell {
+		height: 260px;
+	}
+
+/* Convenience On-The-Go IOS/Android Container */
+.ios-android-container > div::after {
+	content: "";
+	background-image: url(https://i.postimg.cc/MK7ZzDzX/city-scape-app-download.png);
+	opacity: 0.2;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+	</style>
+</head>
+<body>
+   <!-- Main Home Banner and Input Search Container -->
+   <div class="position-relative">
+	<div>
+	  <div class="home-banner"></div>
+	</div>
+
+	<div class="input-search-container">
+	  <form class="d-flex justify-content-center">
+		<div class="d-inline-block position-relative">
+		  <span class="inputIcon"><i class="far fa-building"></i></span>
+		  <label class="inputLabel-default" for="input-label-from"></label>
+		  <input id="input-label-from" class="inputForm" placeholder= "From" type="text" list="input-from-list" required>
+		  <datalist id="input-from-list">
+			<!-- <option value="Gurgaon"></option> -->
+		  </datalist>
+		</div>
+
+		<div class="d-inline-block position-relative">
+		  <span class="inputIcon"><i class="far fa-building"></i></span>
+		  <label class="inputLabel-default" for="input-label-to"></label>
+		  <input id="input-label-to" class="inputForm" type="text" placeholder="To" list="input-to-list" required>
+		  <datalist id="input-to-list">
+			<!-- <option value="Delhi"></option> -->
+		  </datalist>
+		</div>
+
+		<div class="d-inline-block position-relative">
+		  <label class="inputLabel-default" for="input-label-onward-date"></label>
+		  <input id="input-label-onward-date" class="inputForm" placeholder="Onward Date" type="date" required [min]="currentDate">
+		</div>
+
+		<div class="d-inline-block position-relative">
+		  <label class="inputLabel-default" for="input-label-return-date"></label>
+		  <input id="input-label-return-date" class="inputForm"placeholder="ReturnDate" type="date" required [min]="currentDate">
+		</div>
+
+		<div class="d-inline-block position-relative">
+		<ng-template #loginPrompt>
+			<input class="btn btn-primary rounded-0 pl-3 pr-3 pb-2" type="submit" routerLink="/login" value="Search Buses">
+			</ng-template>
+		</div>
+
+	  </form>
+	</div>
+  </div>
+	<!-- Coupons Container -->
+	<div class="position-relative">
+		<div class="holiday-coupon-container bg-white p-2 shadow">
+			<div class="float-left mr-4 ml-4">
+				<img src="https://i.postimg.cc/XYxVCYGb/holiday.png" alt="holiday_coupon">
+			</div>
+
+			<div class="d-table-cell align-middle pl-2">
+				<div class="lead font-weight-bold">SAVE UPTO RS 375 ON BUS TICKETS</div>
+				<div class="text-muted">Use code FIRST on App</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Cashback Container -->
+	<div class="cashback-container d-flex justify-content-center bg-light mb-5 pb-5 pt-5">
+		<div class="text-center bg-white shadow m-3 p-2 pl-5 pr-5 mt-5">
+			<div class="text-muted font-weight-bold small">Travel on RTC and Save up to Rs 175</div>
+			<div><img src="https://i.postimg.cc/kG8J6N81/bus.png" alt="bus"></div>
+			<div class="text-muted small">Pay using Amazon Pay</div>
+			<div class="font-weight-normal">Use code : AABBC</div>
+		</div>
+
+		<div class="text-center bg-white shadow m-3 p-2 pl-5 pr-5 mt-5">
+			<div class="text-muted font-weight-bold small">Cashback up to Rs 275 on bus tickets.</div>
+			<div><img src="https://i.postimg.cc/kg7JGb5s/holiday-cashback.png" alt="bus"></div>
+			<div class="text-muted small">Limited Period Offer</div>
+			<div class="font-weight-normal">Use code : CCDDEE</div>
+		</div>
+
+		<div class="text-center bg-white shadow m-3 p-2 pl-5 pr-5 mt-5">
+			<div class="text-muted font-weight-bold small">Cashback up to Rs 275 on bus tickets.</div>
+			<div><img src="https://i.postimg.cc/d1htvc0K/amazon.png" alt="bus"></div>
+			<div class="text-muted small">Pay using Amazon Pay</div>
+			<div class="font-weight-normal">Limited Period Offer</div>
+		</div>
+	</div>
+
+	<!-- Introducing On-Time Guarantee Container -->
+	<div class="on-time-guarantee d-flex mt-5 mb-5 p-4 border">
+		<div class="pr-4">
+			<img src="https://i.postimg.cc/xTDTr7DW/hero-ontime.png" alt="hero_ontime" width="80px">
+		</div>
+
+		<div>
+			<div>
+				<h2>Introducing On-Time Guarantee</h2>
+				<h4 class="text-muted font-weight-normal">Leave on time, everytime</h4>
+			</div>
+
+			<div class="d-flex pt-4 pb-4">
+				<p class="font-weight-light mr-3"><span><img src="https://i.postimg.cc/Z5Ym4zfD/tip-icon.png" height="23"></span> Look for buses with</p>
+				<p class="mr-3"><img src="https://i.postimg.cc/fyxsTzn1/otgText.png"></p>
+				<p class="font-weight-light mr-3">tag while booking your journey</p>
+			</div>
+
+			<div class="d-flex">
+				<div>
+					<h5 class="text-primary">Bus on time</h5>
+					<div class="font-weight-bold">Get 25% refund</div>
+					<div class="text-muted">If bus departure is delayed by 30 mins from boarding point.</div>
+				</div>
+
+				<div>
+					<h5 class="text-primary">No bus cancellation</h5>
+					<div class="font-weight-bold">Get 150% refund</div>
+					<div class="text-muted">Bus is cancelled without an alternate arrangement.</div>
+				</div>
+
+				<div>
+					<h5 class="text-primary">Alternate assurance</h5>
+					<div class="font-weight-bold">Get 300% refund</div>
+					<div class="text-muted">Bus breaks down with no alternate arrangement within 6 hours.</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Track My Bus - Smarter Way To Travel Container -->
+	<div class="track-my-bus bg-light p-4 mb-5 pb-5">
+		<div class="mb-5">
+			<div class="float-left mr-5 ml-5">
+				<img src="https://i.postimg.cc/mkGxnvzj/tmb-img.png" alt="tmb_img">
+			</div>
+
+			<div class="d-table-cell align-middle pl-5 pr-5">
+				<h3> Smarter Way To Travel</h3>
+				<p class="text-muted">Track your bus with our ‘Track My Bus’ feature and know the exact location in real-time.Stay informed and keep your family informed!</p>
+				<button class="btn btn-light btn-outline-primary" routerLink="/contactus">Contact Us</button>
+			</div>
+		</div>
+
+		<hr class="w-75 border">
+
+		<div class="d-flex justify-content-around p-5">
+			<div class="text-center">
+				<div class="lead text-muted font-weight-normal">BUSES</div>
+				<h1 class="text-primary">10,000</h1>
+				<div class="text-muted">Total buses currently being tracked</div>
+			</div>
+
+			<div class="text-center">
+				<div class="lead text-muted font-weight-normal">ROUTES</div>
+				<h1 class="text-primary">60,000</h1>
+				<div class="text-muted">Total routes covered by live tracking</div>
+			</div>
+
+			<div class="text-center">
+				<div class="lead text-muted font-weight-normal">USERS</div>
+				<h1 class="text-primary">40,000</h1>
+				<div class="text-muted">Total users using Track My Bus feature</div>
+			</div>
+		</div>
+	</div>
+	<!-- We Promise To Deliver Container -->
+	<div class="we-promise-container bg-light p-3 pb-5">
+		<div class="text-center m-4">
+			<img src="https://i.postimg.cc/QN5hqb9S/promise.png" alt="promise" width="85">
+			<h2 class="text-dark m-2">WE PROMISE TO DELIVER</h2>
+		</div>
+
+		<div class="text-center d-flex">
+			<div class="border bg-white w-25">
+				<div class="p-4"><img src="https://i.postimg.cc/wMKHptPh/maximum-choices.png" alt="maximum_choices" width="120"></div>
+				<div class="mb-5 m-4 font-weight-light lead">MAXIMUM CHOICE</div>
+				<div class="m-4 p-1 text-muted">We give you the widest number of travel options across thousands of routes.</div>
+			</div>
+
+			<div class="border bg-white w-25">
+				<div class="p-4"><img src="https://i.postimg.cc/Y2mqs7V6/customer-care.png" alt="customer_care" width="91"></div>
+				<div class="mb-5 mt-4 font-weight-light lead">SUPERIOR CUSTOMER SERVICE</div>
+				<div class="m-4 p-1 text-muted">We put our experience and relationships to good use and are available to solve your travel issues.</div>
+			</div>
+
+			<div class="border bg-white w-25">
+				<div class="p-4"><img src="https://i.postimg.cc/JnHmv3Tr/lowest-Fare.png" alt="lowest_Fare" width="120"></div>
+				<div class="mb-5 mt-4 font-weight-light lead">LOWEST PRICES</div>
+				<div class="m-4 p-1 text-muted">We always give you the lowest price with the best partner offers.</div>
+			</div>
+
+			<div class="border bg-white w-25">
+				<div class="p-4"><img src="https://i.postimg.cc/k4LMgYVR/benefits.png" alt="benefits" width="120"></div>
+				<div class="mb-5 mt-4 font-weight-light lead">UNMATCHED BENEFITS</div>
+				<div class="m-4 p-1 text-muted">We take care of your travel beyond ticketing by providing you with innovative and unique benefits.</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Adding Bootstrap CDN - jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Adding Bootstrap CDN - Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<!-- Adding Bootstrap CDN - Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<!-- Adding JavaScript -->
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
